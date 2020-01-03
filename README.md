@@ -4,11 +4,11 @@ _Now in experimental release, suggestions welcome._
 ## Paper    
 B. Zhang, Q. Wang, X. Lu, F. Wang and P. Li. Locality-constrained affine subspace coding for image classification and retrieval, Pattern Recognition, https://doi.org/10.1016/j.patcog.2019.107167.  
   
-`@inproceedings{ZhangLASC2020,
-  author    = {Bingbing Zhang and Qilong Wang and Xiaoxiao Lu and Fasheng Wang and Peihua Li},
-  title     = {Locality-constrained affine subspace coding for image classification and retrieval},
-  booktitle = {Pattern recognition},
-  year      = {2020},}`  
+`@inproceedings{ZhangLASC2020,  
+  author    = {Bingbing Zhang and Qilong Wang and Xiaoxiao Lu and Fasheng Wang and Peihua Li},  
+  title     = {Locality-constrained affine subspace coding for image classification and retrieval},  
+  booktitle = {Pattern recognition},  
+  year      = {2020},}`    
   
 ## Introduction    
 Feature coding is a key component of the bag of visual words (BoVW) model, which is designed to improve image classification and retrieval performance. In the feature coding process, each feature of an image is nonlinearly mapped via a dictionary of visual words to form a high-dimensional sparse vector. Inspired by the well-known locality-constrained linear coding (LLC), we present a locality constrained affine subspace coding (LASC) method to address the limitation whereby LLC fails to consider the local geometric structure around visual words. LASC is distinguished from all the other coding methods since it constructs a dictionary consisting of an ensemble of affine subspaces. As such, the local geometric structure of a manifold is explicitly modeled by such a dictionary. In the process of coding, each feature is linearly decomposed and weighted to form the first-order LASC vector with respect to its top-k neighboring subspaces. To further boost performance, we propose the second-order LASC vector based on information geometry.       
