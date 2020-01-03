@@ -1,6 +1,6 @@
 function z = lasc_encode(descrs, encoder)
 soft_num = 5 ; % number of nearest subspaces
-%% proximity measure (Euclidean distance, point to center)  
+%%% proximity measure (Euclidean distance, point to center)  
 dist_matrix = sp_dist2(descrs', encoder.words');
 [dist2,min_ind] = sort(dist_matrix,2, 'ascend');
 soft_idx = min_ind(:,1:soft_num);
@@ -11,7 +11,7 @@ weight = ones(size(dist2))./(1+exp(lambda * dist2)) ;
 weight = bsxfun(@rdivide, weight, sum(weight,2)) ;
 weight(isnan(weight)) = 0 ;
 
-%% proximity measure (Mahalanobis distance, rebuilt error)
+%%% proximity measure (Mahalanobis distance, rebuilt error)
 % dist_matrix = zeros(size(descrs, 2),encoder.numWords);
 % for i = 1:encoder.numWords 
 %     err_matrix = encoder.pca.err{i} * bsxfun(@minus, descrs, encoder.words(:,i));
@@ -25,7 +25,7 @@ weight(isnan(weight)) = 0 ;
 % weight = bsxfun(@rdivide, weight, sum(weight,2));
 % weight(isnan(weight)) = 0;
 
-%% proximity measure (Probabilistic Model, posterior probability)
+%%% proximity measure (Probabilistic Model, posterior probability)
 % log_u = zeros(size(descrs, 2),encoder.numWords);
 % for i = 1:encoder.numWords 
 %     mu_sigma2 = (encoder.pca.proj{i} * bsxfun(@minus, descrs, encoder.words(:,i))).^2; 
@@ -41,7 +41,7 @@ weight(isnan(weight)) = 0 ;
 % weight = bsxfun(@rdivide, weight, sum(weight,2));
 % weight(isnan(weight)) = 0;
 
- %% coding features and pooling 
+ %%% coding features and pooling 
 z = cell(1, encoder.numWords*2);
 for i = 1:encoder.numWords       
     curr_idx = find(soft_idx == i);
@@ -50,7 +50,7 @@ for i = 1:encoder.numWords
     curr_idx (curr_idx == 0) = size(descrs, 2);
     curr_num = length(curr_idx);
     if curr_num > 0
-       %% for ridge regression regularization
+       %%% for ridge regression regularization
        beta = encoder.pca.proj{i} * bsxfun(@minus, descrs(:,curr_idx), encoder.words(:,i));
        weight_soft = repmat(curr_weight,1,encoder.pca.pcaNum(i))'; 
        z{i} = mean(beta.* weight_soft, 2);  
