@@ -28,7 +28,7 @@ In this repository, we release the implemetntations of several classical feature
 ## Image Classification Results 
 
 Methods | VOC 2007 | Caltech 256 | MIT67 | SUN397  
-----    | ----     |----         |----   | -----  
+:----:    | :----:     |:----:         |:----:   | :-----:  
 SC  | 85.6 | 84.4 | 81.2 | 61.7
 LLC  | 85.4 | 83.9 | 81.0 | 60.7
 VLAD  | 84.7 | 84.9 | 77.5 | 62.2
@@ -39,7 +39,7 @@ LASC | 87.6 | 88.1 | 81.5 | 64.3
 
 ## Image Retrieval Results
 Methods | Dim | Holidays | UKB | Oxford5K  
-----    | ----     |----         |----   | -----  
+:----:    | :----:     |:----:         |:----:   | :-----:  
 SC  | 512 | 88.9 |3.65  |59.1 
 LLC  | 512 | 88.1 | 3.61 | 57.0
 VLAD  | 512 | 88.8 | 3.71 | 57.5
