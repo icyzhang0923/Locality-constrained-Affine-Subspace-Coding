@@ -9,7 +9,7 @@ In this repository, we release the implemetntations of several classical feature
 ## Framework  
 ## Installation and Usage  
 * Always use `git clone --recursive git@github.com:icyzhang0923/Locality-constrained-Affine-Subspace-Coding.git` to clone this project.  
-* Download the image classification datasets ([VOC2007](https://pjreddie.com/projects/pascal-voc-dataset-mirror/), [Caltech256](http://www.vision.caltech.edu/Image_Datasets/Caltech256/), [Scene67](http://web.mit.edu/torralba/www/indoor.html), and [SUN397](https://vision.princeton.edu/projects/2010/SUN/)) or the image retrieval datasets ([INRIA Holidays](http://lear.inrialpes.fr/~jegou/data.php), [UKBench](), and [Oxford5K](http://www.robots.ox.ac.uk/~vgg/data/oxbuildings/)).   
+* Download the image classification datasets ([VOC2007](https://pjreddie.com/projects/pascal-voc-dataset-mirror/), [Caltech256](http://www.vision.caltech.edu/Image_Datasets/Caltech256/), [Scene67](http://web.mit.edu/torralba/www/indoor.html), and [SUN397](https://vision.princeton.edu/projects/2010/SUN/)) or the image retrieval datasets ([INRIA Holidays](http://lear.inrialpes.fr/~jegou/data.php), [UKBench](http://www.vis.uky.edu/~stewe/ukbench/), and [Oxford5K](http://www.robots.ox.ac.uk/~vgg/data/oxbuildings/)).   
 * 3
 
 
