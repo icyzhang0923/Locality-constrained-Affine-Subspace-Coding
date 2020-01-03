@@ -25,8 +25,8 @@ In this repository, we release the implemetntations of several classical feature
 * Regularizations in objective function: ridge regression  
 * Proximity measures: Euclidean distance between feature to cluster center  
 * Fetrue normalization method: matrix  
-## Image Classification Results 
-
+## Image Classification Results   
+  
 Methods | VOC 2007 | Caltech 256 | MIT67 | SUN397  
 :----:    | :----:     |:----:         |:----:   | :-----:  
 SC  | 85.6 | 84.4 | 81.2 | 61.7
@@ -35,16 +35,22 @@ VLAD  | 84.7 | 84.9 | 77.5 | 62.2
 FV  | 84.9 | 86.2 | 81.0 | 64.3
 LASC | 87.6 | 88.1 | 81.5 | 64.3
 
-
-
-## Image Retrieval Results
+## Image Retrieval Results  
+  
 Methods | Dim | Holidays | UKB | Oxford5K  
 :----:    | :----:     |:----:         |:----:   | :-----:  
 SC  | 512 | 88.9 |3.65  |59.1 
 LLC  | 512 | 88.1 | 3.61 | 57.0
 VLAD  | 512 | 88.8 | 3.71 | 57.5
 BCNN  | 512 | 88.8 | 3.78 | 66.8
-LASC | 512 | 90.9 | 3.85 | 67.1
+LASC | 512 | 90.9 | 3.85 | 67.1  
+
+## Acknowledgments    
+* We thank the VLFeat and MatConvNet Team to develop these two useful computer vision toolbox.  
+* We thank the the developer of the optimization toolbox [SPAMS](http://spams-devel.gforge.inria.fr/).    
+## Contact Information    
+Should you have any question or suggestion regarding our released code, please feel free to contact us: icyzhang@mail.dlut.edu.cn.
+
 
 
 
