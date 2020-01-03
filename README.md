@@ -9,7 +9,7 @@ In this repository, we release the implemetntations of several classical feature
 ## Framework  
 ## Environment     
 * Linux OS and Windows OS    
-* MATLAB 2017b or other vision      
+* MATLAB 2017b      
 * CUDA 8.0+    
 * CUDNN 5.0+    
 ## Installation and Usage  
