@@ -37,7 +37,7 @@ LASC | 87.6 | 88.1 | 81.5 | 64.3
 
 
 
-## image Retrieval Results
+## Image Retrieval Results
 Methods | Dim | Holidays | UKB | Oxford5K  
 ----    | ----     |----         |----   | -----  
 SC  | 512 | 88.9 |3.65  |59.1 
