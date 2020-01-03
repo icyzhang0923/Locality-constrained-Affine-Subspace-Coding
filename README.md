@@ -46,10 +46,10 @@ BCNN  | 512 | 88.8 | 3.78 | 66.8
 LASC | 512 | 90.9 | 3.85 | 67.1  
 
 ## Acknowledgments    
-* We thank the VLFeat and MatConvNet Team to develop these two useful computer vision toolbox.  
-* We thank the the developer of the optimization toolbox [SPAMS](http://spams-devel.gforge.inria.fr/).    
-## Contact Information    
-Should you have any question or suggestion regarding our released code, please feel free to contact us: icyzhang@mail.dlut.edu.cn.
+* We thank the [VLFeat](http://www.vlfeat.org/) and [MatConvNet](http://www.vlfeat.org/matconvnet/) Team to develop these two useful computer vision toolbox.    
+* We thank the the developer of the optimization toolbox [SPAMS](http://spams-devel.gforge.inria.fr/).     
+## Contact Information      
+Should you have any question or suggestion regarding our released code, please feel free to contact us: icyzhang@mail.dlut.edu.cn.  
 
 
 
