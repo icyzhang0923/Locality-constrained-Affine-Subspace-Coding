@@ -3,7 +3,7 @@ function DimReduce(imdb, opts, dim, dim_pca, whitening)
 % load training data
 opts.cacheChunkSize = 512 ;
 numChunks = ceil(numel(imdb.images.name) / opts.cacheChunkSize) ;
-train_data = cell(1,sum(imdb.images.set <= 2)) ; 
+train_data = cell(1,sum(imdb.images.set == 3)) ; 
 num = ceil(1e4/numChunks);
 for c = 1:numChunks
   chunkPath = fullfile(opts.cacheDir, sprintf('chunk-%03d.mat',c)) ;
