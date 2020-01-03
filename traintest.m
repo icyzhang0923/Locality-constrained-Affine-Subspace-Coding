@@ -5,7 +5,7 @@ clear
 run(fullfile(fileparts(which(mfilename)), 'VLFeat', 'toolbox', 'vl_setup.m')) ;
 run(fullfile(fileparts(which(mfilename)), 'matconvnet', 'matlab', 'vl_setupnn.m')) ;
 gpuDevice(1);
-net = load('imagenet-vgg-verydeep-16') ; % load the pre-trained models
+net = load('imagenet-vgg-verydeep-16.mat') ; % load the pre-trained models
 net.layers = net.layers(1:31); % the output of the last conv layer
 net = vl_simplenn_move(net, 'gpu') ;
              
