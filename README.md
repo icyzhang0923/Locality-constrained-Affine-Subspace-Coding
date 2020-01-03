@@ -1,4 +1,4 @@
 # Locality-constrained-Affine-Subspace-Coding
-The implementation of Locality-constrained affine subspace coding (LASC, Pattern Recognition 2020)  
+This is the implementation of Locality-constrained affine subspace coding for image classification and retrieval 
 _Now in experimental release, suggestions welcome._  
 ## Paper
