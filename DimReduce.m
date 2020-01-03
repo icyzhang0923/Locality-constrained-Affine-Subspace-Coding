@@ -11,7 +11,7 @@ for c = 1:numChunks
   lo = opts.cacheChunkSize * (c-1) + 1;
   hi = min(opts.cacheChunkSize * c,numel(imdb.images.name));
   chunk_split = imdb.images.set(lo:hi);
-  data = data(:,chunk_split <= 2);
+  data = data(:,chunk_split == 3);
   sel = vl_colsubset(1:size(data,2), min(size(data,2),single(num))) ;
   train_data{c} = data(:, sel);
   clear data ;
