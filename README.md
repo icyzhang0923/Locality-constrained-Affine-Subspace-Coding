@@ -29,11 +29,11 @@ In this repository, we release the implemetntations of several classical feature
 
 Methods | VOC 2007 | Caltech 256 | MIT67 | SUN397  
 ----    | ----     |----         |----   | -----  
-SC (16K) | 85.6 | 84.4 | 81.2 | 61.7
-LLC (16K) | 85.4 | 83.9 | 81.0 | 60.7
-VLAD (128) | 84.7 | 84.9 | 77.5 | 62.2
-FV (64) | 84.9 | 86.2 | 81.0 | 64.3
-LASC    | 87.6 | 88.1 | 81.5 | 64.3
+SC  | 85.6 | 84.4 | 81.2 | 61.7
+LLC  | 85.4 | 83.9 | 81.0 | 60.7
+VLAD  | 84.7 | 84.9 | 77.5 | 62.2
+FV  | 84.9 | 86.2 | 81.0 | 64.3
+LASC | 87.6 | 88.1 | 81.5 | 64.3
 
 
 
