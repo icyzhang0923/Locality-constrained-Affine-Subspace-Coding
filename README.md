@@ -25,6 +25,16 @@ In this repository, we release the implemetntations of several classical feature
 * Regularizations in objective function: ridge regression  
 * Proximity measures: Euclidean distance between feature to cluster center  
 * Fetrue normalization method: matrix  
+## Image Classification Results 
+
+Methods | VOC 2007 | Caltech 256 | MIT67 | SUN397  
+----    | ----     |----         |----   | -----  
+SC(16K) | 85.6 | 84.4 | 81.2 | 61.7
+
+
+
+## image Retrieval Results
+
 
 
 
