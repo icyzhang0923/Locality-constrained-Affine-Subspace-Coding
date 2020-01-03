@@ -19,7 +19,7 @@ In this repository, we release the implemetntations of several classical feature
 * Always use `git clone --recursive git@github.com:icyzhang0923/Locality-constrained-Affine-Subspace-Coding.git` to clone this project.  
 * Download the image classification datasets ([VOC2007](https://pjreddie.com/projects/pascal-voc-dataset-mirror/), [Caltech256](http://www.vision.caltech.edu/Image_Datasets/Caltech256/), [Scene67](http://web.mit.edu/torralba/www/indoor.html), and [SUN397](https://vision.princeton.edu/projects/2010/SUN/)) or the image retrieval datasets ([INRIA Holidays](http://lear.inrialpes.fr/~jegou/data.php), [UKBench](http://www.vis.uky.edu/~stewe/ukbench/), and [Oxford5K](http://www.robots.ox.ac.uk/~vgg/data/oxbuildings/)).    
 * Download the pretrained [VGG-VD-16](http://www.vlfeat.org/matconvnet/pretrained/) model on ImageNet dataset.
-* Complie the MatConvNet and VLFeat toolbox refer to http://www.vlfeat.org/matconvnet.
+* Complie the [VLFeat](http://www.vlfeat.org/) and [MatConvNet](http://www.vlfeat.org/matconvnet/) tool box. Please refer to the official website for more details.  
 * Run the main function `traintest.m` to start the experiment.  
 ## Optimal Parameters Settings for LASC  
 * Affine subspace dictionary size: 128  
