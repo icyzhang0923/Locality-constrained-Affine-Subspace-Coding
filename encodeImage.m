@@ -67,11 +67,8 @@ psi = cat(2, psi{:}) ;
 % --------------------------------------------------------------------
 function z = encodeOne(encoder, Im)
 % --------------------------------------------------------------------
-if strcmp(encoder.type, 'bcnn')
-    descrs =  CalculateFeat_bcnn(Im, encoder, 384);
-else
-    descrs =  CalculateFeat(Im, encoder, 384);
-end
+descrs =  CalculateFeat(Im, encoder, 384);
+
 switch encoder.type
     case 'soft'
         beta=-(10);
@@ -118,10 +115,8 @@ switch encoder.type
       assign = zeros(encoder.numWords, numel(words), 'single') ;
       assign(sub2ind(size(assign), double(words), 1:numel(words))) = 1 ;
       z = vl_vlad(descrs, encoder.words,assign, 'SquareRoot', 'NormalizeComponents') ;
-    case 'bcnn'
-        z = bl_pooling(descrs) ;
-        
-     
+
+             
 z = z /(norm(z)+eps) ;
 z = z(:);
 end
