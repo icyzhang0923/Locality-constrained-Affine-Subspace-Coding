@@ -14,7 +14,7 @@ for i = 1:dictionarySize
     x(i) = size(sift_sets,2);
     sift_sets = bsxfun(@minus, sift_sets, dictionary(:,i));  
     
-    %% for ridge regression %%   
+    %%% for ridge regression %%   
     cov_matrix = cov(sift_sets') + 1e-3 * eye(size(sift_sets,1));    
     [vectors,values] = eig(cov_matrix);  
     [max_value,max_idx] = sort(diag(values),'descend');
