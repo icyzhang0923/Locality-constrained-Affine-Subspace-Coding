@@ -13,6 +13,7 @@ opts = vl_argparse(opts, varargin) ;
 % gpuDevice(1);
 [x1, x2, ~] = size(im);
 min_scale = 225.0 / min([x1, x2]);
+% min_scale = 256.0 / min([x1, x2]); % for bcnn
 descrs = cell(1,numel(opts.scales));
 for si = 1:numel(opts.scales)
   
@@ -26,7 +27,8 @@ for si = 1:numel(opts.scales)
   im_ = gpuArray(im_) ;
   res = vl_simplenn(net, im_) ;
   clear im_
-  feats = gather(res(32).x);   
+  feats = gather(res(32).x);  
+%   feats = gather(res(31).x); % for bcnn
   clear res
   descrs{si} = feats;
   
