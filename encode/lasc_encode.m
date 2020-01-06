@@ -11,7 +11,7 @@ dist2 = dist2(:,1:soft_num);
 % %% for retrieval task 
 % lambda = 10;
 % weight = exp(-lambda * dist2);
-%% for classification task 
+%%% for classification task 
 lambda = 5;
 weight = ones(size(dist2))./(1+exp(lambda*dist2)); 
 
