@@ -3,17 +3,14 @@ function DimReduce(imdb, opts, dim, dim_pca, whitening)
 % load training data
 opts.cacheChunkSize = 512 ;
 numChunks = ceil(numel(imdb.images.name) / opts.cacheChunkSize) ;
-train_data = cell(1,sum(imdb.images.set == 3)) ; 
-num = ceil(1e4/numChunks);
+train_data = cell(1,sum(imdb.images.set > 2)) ; 
 for c = 1:numChunks
   chunkPath = fullfile(opts.cacheDir, sprintf('chunk-%03d.mat',c)) ;
   load(chunkPath, 'data') ;
   lo = opts.cacheChunkSize * (c-1) + 1;
   hi = min(opts.cacheChunkSize * c,numel(imdb.images.name));
   chunk_split = imdb.images.set(lo:hi);
-  data = data(:,chunk_split == 3);
-  sel = vl_colsubset(1:size(data,2), min(size(data,2),single(num))) ;
-  train_data{c} = data(:, sel);
+  train_data{c} = data(:,chunk_split > 2);
   clear data ;
 end
 train_data = cat(2,train_data{:}) ;
@@ -27,6 +24,17 @@ for b = 1:num_block
     lo = (b-1)*dim +1;
     hi = b*dim;
     this_block = train_data(lo:hi, :);
+    
+%     %% for bcnn method 
+%       options.ReducedDim = dim_pca ;
+%       [V, D, MEANDATA, ~] = PCA(this_block',options) ;
+%       pcaData.mu{b} = MEANDATA' ;
+%       if ~whitening
+%         pcaData.proj{b} = V' ;
+%       else
+%         pcaData.proj{b} = diag(1./sqrt(D + 1e-5)) * V' ;
+%       end  
+    %% for encoding method (lasc, llc, fc, vlad, sc) 
     pcaData.mu{b} = mean(this_block,2);
     this_block =  bsxfun(@minus, this_block, pcaData.mu{b});    
 
@@ -36,6 +44,7 @@ for b = 1:num_block
     else
         pcaData.proj{b} = diag(1./sqrt(D(1:dim_pca) + 1e-5)) * V(:,1:dim_pca)' ;
     end  
+    
     t = toc;
     fprintf('%s: pca of block %d trained, elapsing %.2f minutes.\n', mfilename, b, t/60) ;
 end
@@ -54,6 +63,10 @@ for c = 1:numChunks
     end
     clear data_ori
     data = cat(1, data{:});
+    if strcmp(opts.prefix, 'bcnn') 
+        data = sign(data) .* sqrt(abs(data)) ; % for bcnn
+    end
+    data = bsxfun(@times, data, 1./(sqrt(sum(data.^2))+eps)) ;
     newPath = fullfile(opts.pcaDir, sprintf('chunk-%03d.mat',c)) ;
     if ~exist(opts.pcaDir, 'dir')
         mkdir(opts.pcaDir);

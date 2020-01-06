@@ -46,7 +46,9 @@ for c = 1:numChunks
       case 'chi2', data = single(data); data = vl_homkermap(data,1,'kchi2') ;
       otherwise, assert(false) ;
     end
-    data = bsxfun(@times, data, 1./(sqrt(sum(data.^2))+eps)) ;
+    if ~(encoder.pca && strcmp(encoder.type, 'bcnn'))
+        data = bsxfun(@times, data, 1./(sqrt(sum(data.^2))+eps)) ; % no l2-norm when bcnn with pca
+    end
                                                                                                                                                                                                
     if ~isempty(opts.cacheDir)
       save(chunkPath, 'data', '-v7.3') ;
@@ -67,8 +69,11 @@ psi = cat(2, psi{:}) ;
 % --------------------------------------------------------------------
 function z = encodeOne(encoder, Im)
 % --------------------------------------------------------------------
-descrs =  CalculateFeat(Im, encoder, 384);
-
+if strcmp(encoder.type, 'bcnn')
+    descrs =  CalculateFeat_bcnn(Im, encoder, 384);
+else
+    descrs =  CalculateFeat(Im, encoder, 384);
+end
 switch encoder.type
     case 'soft'
         beta=-(10);
@@ -115,9 +120,9 @@ switch encoder.type
       assign = zeros(encoder.numWords, numel(words), 'single') ;
       assign(sub2ind(size(assign), double(words), 1:numel(words))) = 1 ;
       z = vl_vlad(descrs, encoder.words,assign, 'SquareRoot', 'NormalizeComponents') ;
-
-             
-z = z /(norm(z)+eps) ;
+    case 'bcnn'
+        z = bl_pooling(descrs) ;
+        
 z = z(:);
 end
 
