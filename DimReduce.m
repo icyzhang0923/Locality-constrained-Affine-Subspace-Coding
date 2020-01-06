@@ -34,7 +34,7 @@ for b = 1:num_block
 %       else
 %         pcaData.proj{b} = diag(1./sqrt(D + 1e-5)) * V' ;
 %       end  
-    %% for encoding method (lasc, llc, fc, vlad, sc) 
+    %%% for encoding method (lasc, llc, fc, vlad, sc) 
     pcaData.mu{b} = mean(this_block,2);
     this_block =  bsxfun(@minus, this_block, pcaData.mu{b});    
 
