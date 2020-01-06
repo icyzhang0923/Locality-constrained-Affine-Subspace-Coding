@@ -2,7 +2,6 @@ function mAP = evaluateUKB(imdb, dataDir)
 
 ChunkSize = 512 ;
 numChunks = ceil(numel(imdb.images.name) / ChunkSize) ;
-all_data = cell(1, numChunks);
 for c = 1:numChunks
   chunkPath = fullfile(dataDir, sprintf('chunk-%03d.mat',c)) ;
   fprintf('%s: loading descriptors from %s\n', mfilename, chunkPath) ;
