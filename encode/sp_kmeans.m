@@ -146,8 +146,8 @@ function [minvals, index] = lph_pdist2(centres, data)
     for i = 1:num_iter
         start2end = (i-1)*num_per_iter +1: i * num_per_iter;
         dist2 = sp_dist2(centres, data(start2end, :));
-        [Y I] = sort(dist2, 1, 'ascend');
-        minvals(start2end) = Y(1, :);%
+        [Y I ] = sort(dist2, 1, 'ascend');
+        minvals(start2end) = Y(1, :);
         index(start2end) = I(1, :);
     end
 

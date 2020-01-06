@@ -34,11 +34,11 @@ function x = feature_sign(B,y,lambda,init_x)
 
 nbases = size(B,2);
 OptTol = 1e-5;
-if nargin < 4, x = zeros(nbases, 1);%
+if nargin < 4, x = zeros(nbases, 1);
 else x = init_x;
-end
-theta = sign(x);     % sign flag theta
-a = (x~=0);          % active set
+end;
+theta = sign(x);     %sign flag
+a = (x~=0);          %active set
 optc = 0;                
 
 By = B'*y;
@@ -48,20 +48,20 @@ Bx_h = B_h * x_h;
 all_d = 2 *(B' * Bx_h - By);
 [ma, mi] = max(abs(all_d).*(~a));
 
-while optc == 0
+while optc == 0,
     optc=1;
-    if all_d(mi) > lambda + 1e-10
+    if all_d(mi) > lambda + 1e-10,
         theta(mi) = -1;
         a(mi) = 1;
         b = B(:,mi);
         x(mi) = (lambda - all_d(mi)) / (b'*b*2);            
-    elseif all_d(mi) < -lambda - 1e-10
+    elseif all_d(mi) < -lambda - 1e-10,
         theta(mi) = 1;
         a(mi) = 1;
         b = B(:,mi);
         x(mi) = (-lambda - all_d(mi)) / (b'*b*2);            
     else
-        if sum(a) == 0      
+        if sum(a) == 0,      
             lambda = ma - 2*1e-10;
             optc = 0;
             b = B(:,mi);
@@ -73,9 +73,9 @@ while optc == 0
     B_h = B(:,a);
     x_h = x(a);
     theta_h = theta(a);
-    while opts == 0
+    while opts == 0,
         opts = 1;
-        if size(B_h,2) <= length(y)
+        if size(B_h,2) <= length(y),
             BB = B_h' * B_h;
             x_new = BB \ (B_h'*y - lambda*theta_h/2);
             o_new = L1_cost(y,B_h,x_new,lambda);
@@ -84,12 +84,12 @@ while optc == 0
             s=find(sign(x_new)~=theta_h);
             x_min=x_new;
             o_min=o_new;
-            for j=1:length(s)
+            for j=1:length(s),
                 zd=s(j);
                 x_s=x_h-x_h(zd)*(x_new-x_h)/(x_new(zd)-x_h(zd));
                 x_s(zd)=0;  %make sure it's zero
                 o_s=L1_cost(y,B_h,x_s,lambda);
-                if o_s<o_min
+                if o_s<o_min,
                     x_min=x_s;
                     o_min=o_s;
                 end
@@ -99,12 +99,12 @@ while optc == 0
             q=x_h./(d+eps);
             x_min=x_h;
             o_min=L1_cost(y, B_h, x_h, lambda);
-            for j = 1:length(q)
+            for j = 1:length(q),
                 zd = q(j);
                 x_s = x_h - zd * d;
                 x_s(j) = 0;       % make sure it's zero
                 o_s = L1_cost(y, B_h, x_s, lambda);
-                if o_s < o_min
+                if o_s < o_min,
                    x_min = x_s;
                    o_min = o_s;
                 end
@@ -118,14 +118,14 @@ while optc == 0
         theta_h = theta(a);
         Bx_h = B_h * x_h;
         active_d = 2*(B_h'*(Bx_h-y)) + lambda*theta_h;
-        if ~isempty(find(abs(active_d) > OptTol))
+        if ~isempty(find(abs(active_d) > OptTol)),
             opts=0;
         end
     end
 
     all_d = 2*(B'*Bx_h - By);
     [ma, mi] = max(abs(all_d).*(~a));
-    if ma > lambda + OptTol
+    if ma > lambda + OptTol,
         optc = 0;
     end
 end
@@ -151,10 +151,10 @@ x = zeros(size(A, 1), 1);           %coeff
 grad = A * sparse(x) + b;
 [ma, mi] = max(abs(grad).*(x==0));
 
-while true
-  if grad(mi) > lambda+EPS
+while true,
+  if grad(mi) > lambda+EPS,
     x(mi) = (lambda-grad(mi)) / A(mi,mi);
-  elseif grad(mi) < -lambda - EPS
+  elseif grad(mi) < -lambda - EPS,
     x(mi) = (-lambda - grad(mi)) / A(mi,mi);            
   else
     if all(x==0)
@@ -162,7 +162,7 @@ while true
     end
   end    
   
-  while true
+  while true,
     a = x ~= 0;   %active set
     Aa = A(a,a);
     ba = b(a);
@@ -183,13 +183,13 @@ while true
     o_min = o_new;
     d = x_new - xa;
     t = d ./ xa;
-    for zd = s'
+    for zd = s',
       x_s = xa - d/t(zd);
-      x_s(zd) = 0;  % make sure it's zero
+      x_s(zd) = 0;  %make sure it's zero
 %       o_s = L1QP_loss(net,Aa,ba,x_s);
       idx = find(x_s);
       o_s = (Aa(idx, idx)*x_s(idx)/2 + ba(idx))'*x_s(idx) + lambda*sum(abs(x_s(idx)));
-      if o_s < o_min
+      if o_s < o_min,
         x_min = x_s;
         o_min = o_s;
       end
@@ -200,7 +200,7 @@ while true
 
   grad = A * sparse(x) + b;
   [ma, mi] = max(abs(grad).*(x==0));
-  if ma <= lambda + EPS
+  if ma <= lambda + EPS,
     break;
   end
 end
