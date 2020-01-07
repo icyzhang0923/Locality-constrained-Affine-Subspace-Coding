@@ -22,6 +22,7 @@ function  encodeImage(encoder, im, kernel, varargin)
 
 opts.cacheDir = [] ;
 opts.cacheChunkSize = 512 ;
+opts.pca = false ;
 opts = vl_argparse(opts,varargin) ;
 
 if ~iscell(im), im = {im} ; end
@@ -46,7 +47,7 @@ for c = 1:numChunks
       case 'chi2', data = single(data); data = vl_homkermap(data,1,'kchi2') ;
       otherwise, assert(false) ;
     end
-    if ~(strcmp(encoder.type, 'bcnn'))
+    if ~(opts.pca && strcmp(encoder.type, 'bcnn'))
         data = bsxfun(@times, data, 1./(sqrt(sum(data.^2))+eps)) ; % no l2-norm when bcnn with pca
     end
                                                                                                                                                                                                
