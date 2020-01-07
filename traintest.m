@@ -95,7 +95,6 @@ if strcmp(opts.prefix, 'bcnn')
     encoder.readImageFn = @readImage ;
     encoder.extractorFn =  @(x) getDenseCNNres(x, net, 'step', 4,'scales', [2/3, 1, 4/3]) ;
     opts.kernel = 'linear' ;
-    encoder.pca = opts.pca ;
         
 end
 encodeImage(encoder, fullfile(imdb.imageDir, imdb.images.name),opts.kernel,'cacheDir', opts.cacheDir) ;         
