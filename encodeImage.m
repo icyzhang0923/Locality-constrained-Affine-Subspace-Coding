@@ -46,7 +46,7 @@ for c = 1:numChunks
       case 'chi2', data = single(data); data = vl_homkermap(data,1,'kchi2') ;
       otherwise, assert(false) ;
     end
-    if ~(encoder.pca && strcmp(encoder.type, 'bcnn'))
+    if ~(strcmp(encoder.type, 'bcnn'))
         data = bsxfun(@times, data, 1./(sqrt(sum(data.^2))+eps)) ; % no l2-norm when bcnn with pca
     end
                                                                                                                                                                                                
