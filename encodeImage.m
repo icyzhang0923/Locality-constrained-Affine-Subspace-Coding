@@ -22,6 +22,7 @@ function  encodeImage(encoder, im, kernel, varargin)
 
 opts.cacheDir = [] ;
 opts.cacheChunkSize = 512 ;
+opts.pca = false ;
 opts = vl_argparse(opts,varargin) ;
 
 if ~iscell(im), im = {im} ; end
