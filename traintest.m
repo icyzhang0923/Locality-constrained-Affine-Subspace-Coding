@@ -97,7 +97,7 @@ if strcmp(opts.prefix, 'bcnn')
     opts.kernel = 'linear' ;
         
 end
-encodeImage(encoder, fullfile(imdb.imageDir, imdb.images.name),opts.kernel,'cacheDir', opts.cacheDir, opts.pca) ;         
+encodeImage(encoder, fullfile(imdb.imageDir, imdb.images.name),opts.kernel,'cacheDir', opts.cacheDir, 'pca', opts.pca) ;         
 
 dataDir = opts.cacheDir;
 
