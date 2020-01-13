@@ -27,7 +27,7 @@ for i = 1:dictionarySize
     
     dictionary_pca.proj{i} = max_values^(-1/2) * max_vectors';
     dictionary_pca.log_coef{i} = log(2*pi)*ones(num_pca,1)+log(max_value(1:num_pca));
-    dictionary_pca.err{i} = eye(size(descrs,1)) - max_vectors * max_vectors'; % calculate err
+    dictionary_pca.err{i} = eye(size(descrs,1)) - max_vectors * max_vectors'; 
      
 %     %%  for elastic net  %%
 %      sift_sets = bsxfun(@times, sift_sets, 1./max(sqrt(sum(sift_sets.^2)), eps(4))) ;
