@@ -115,6 +115,6 @@ for iter = 1:iter_num
         case {'caltech256','scene67','sun397'}
             fprintf('traintest: Iteration %2d  accuracy: %5.4f\n', iter,  accuracies(iter));
         case 'voc07'
-            fprintf('traintest: Iteration %2d  mAP: %5.4f\n', iter,  accuracies(iter));
+            fprintf('traintest: Iteration %2d  mAP: %5.4f\n', iter,  map(iter));
     end
 end
