@@ -93,7 +93,7 @@ z1 = cat(1, z{1:encoder.numWords});
 z1 = z1./(norm(z1)+eps);
 z2 = cat(1, z{encoder.numWords+1:end});
 z2 = z2./(norm(z2)+eps);
-gama = 0.8; % weight of first-order LASC and second-order LASC, 1 for retrieval task.
+gama = 0.8; % weight of first-order LASC and second-order LASC
 z = [gama*z1;(1-gama)*z2];
 end
 
