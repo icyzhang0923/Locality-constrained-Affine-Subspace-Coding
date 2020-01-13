@@ -5,7 +5,7 @@ _Now in experimental release, suggestions welcome._
 B. Zhang, Q. Wang, X. Lu, F. Wang and P. Li. Locality-constrained affine subspace coding for image classification and retrieval, Pattern Recognition, https://doi.org/10.1016/j.patcog.2019.107167.  
 ## Introduction    
 Feature coding is a key component of the bag of visual words (BoVW) model, which is designed to improve image classification and retrieval performance. In the feature coding process, each feature of an image is nonlinearly mapped via a dictionary of visual words to form a high-dimensional sparse vector. Inspired by the well-known locality-constrained linear coding (LLC), we present a locality constrained affine subspace coding (LASC) method to address the limitation whereby LLC fails to consider the local geometric structure around visual words. LASC is distinguished from all the other coding methods since it constructs a dictionary consisting of an ensemble of affine subspaces. As such, the local geometric structure of a manifold is explicitly modeled by such a dictionary. In the process of coding, each feature is linearly decomposed and weighted to form the first-order LASC vector with respect to its top-k neighboring subspaces. To further boost performance, we propose the second-order LASC vector based on information geometry.       
-In this repository, we release the implementations of several classical feature coding methods (LASC, SC, LLC, VLAD, and FV). We also release our implementation of [bilinear pooling](http://vis-www.cs.umass.edu/bcnn/) method as one of the comparison algorithm. It supports both Linux OS and Windows OS, and it provides basic pipelines for most of image classification and image retrieval datasets.    
+In this repository, we release the implementations of two feature coding methods (LASC and FV). It supports both Linux OS and Windows OS, and it provides basic pipelines for most of image classification and image retrieval datasets.    
 ## Framework  
 ![](https://github.com/icyzhang0923/Locality-constrained-Affine-Subspace-Coding/blob/master/LASC%20_framework.jpg)  
 * Figure 1(a) shows our idea of LASC and a comparison with LLC.  
@@ -36,17 +36,7 @@ SC  | 85.6 | 84.4 | 81.2 | 61.7
 LLC  | 85.4 | 83.9 | 81.0 | 60.7
 VLAD  | 84.7 | 84.9 | 77.5 | 62.2
 FV  | 84.9 | 86.2 | 81.0 | 64.3
-LASC | 87.6 | 88.1 | 81.5 | 64.3
-
-## Image Retrieval Results  
-  
-Methods | Dim | Holidays | UKB | Oxford5K  
-:----:    | :----:     |:----:         |:----:   | :-----:  
-SC  | 512 | 88.9 |3.65  |59.1 
-LLC  | 512 | 88.1 | 3.61 | 57.0
-VLAD  | 512 | 88.8 | 3.71 | 57.5
-BCNN  | 512 | 88.8 | 3.78 | 66.8 
-LASC | 512 | 90.9 | 3.85 | 67.1  
+LASC | 87.6 | 88.1 | 81.5 | 64.3  
 
 ## Acknowledgments    
 * We thank the [VLFeat](http://www.vlfeat.org/) and [MatConvNet](http://www.vlfeat.org/matconvnet/) team to develop these two useful computer vision toolbox.    
