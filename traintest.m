@@ -118,4 +118,8 @@ for iter = 1:iter_num
             fprintf('traintest: Iteration %2d  mAP: %5.4f\n', iter,  maps(iter));
     end
 end
-fprintf('Average accuracy over %d times: mean+std %5.4f+%3.4f\n', iter_num, mean(accuracies), std(accuracies)); 
+if strcmp(opts.dataset,voc07')
+  fprintf('Average accuracy over %d times: mean+std %5.4f+%3.4f\n', iter_num, mean(maps), std(maps)); 
+else
+  fprintf('Average accuracy over %d times: mean+std %5.4f+%3.4f\n', iter_num, mean(accuracies), std(accuracies)); 
+end
