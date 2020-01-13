@@ -92,6 +92,8 @@ switch opts.dataset
     case { 'voc07','scene67','sun397'}, iter_num = 1;
     case { 'caltech256'}, iter_num = 3;
 end
+train_idx = find(imdb.images.set <= 2) ;
+test_idx = find(imdb.images.set == 3) ;
 accuracies = zeros(iter_num, 1);
 maps = zeros(iter_num,1) ;
 for iter = 1:iter_num
