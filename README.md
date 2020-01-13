@@ -33,7 +33,7 @@ In this repository, we release the implementations of two feature coding methods
 Methods | VOC 2007 | Caltech 256 | MIT67 | SUN397  
 :----:    | :----:     |:----:         |:----:   | :-----:  
 FV  | 84.9 | 86.2 | 81.0 | 64.3
-LASC | 87.6 | 88.1 | 81.5 | 64.3  
+LASC | 87.6 | 88.2 | 81.5 | 64.5  
 
 ## Acknowledgments    
 * We thank the [VLFeat](http://www.vlfeat.org/) and [MatConvNet](http://www.vlfeat.org/matconvnet/) team to develop these two useful computer vision toolbox.    
