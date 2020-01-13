@@ -99,16 +99,9 @@ end
 
 if isempty(opts.numWords)
     switch opts.type
-      case {'bovw'}
-        opts.numWords = 1024 ;
       case {'fv'}
         opts.numWords = 64 ;
         opts.numPcaDimensions = 50 ;
-      case {'vlad'}
-        opts.numWords = 64 ;
-        opts.numPcaDimensions = 100 ;
-        opts.whitening = true ;
-        opts.whiteninRegul = 0.01 ;
       otherwise
         assert(false) ;
     end
@@ -116,9 +109,7 @@ end
 
 if isempty(opts.numSamplesPerWord)
     switch opts.type
-      case {'bovw', 'llc','sc','soft'}
-        opts.numSamplesPerWord = 50;
-      case {'vlad','lasc','fv'}
+      case {'lasc','fv'}
         opts.numSamplesPerWord = 5000 ;
       otherwise
         assert(false) ;
@@ -155,7 +146,7 @@ descrs = cat(2, descrs{:}) ;
 
 %% Step 1 (optional): learn PCA projection for fv and vlad
 switch encoder.type
-  case {'fv', 'vlad'}
+  case 'fv'
     if opts.numPcaDimensions < min(size(descrs,1),inf) || opts.whitening
       fprintf('%s: learning PCA rotation/projection\n', mfilename) ;
       encoder.projectionCenter = mean(descrs,2) ;
@@ -188,15 +179,7 @@ end
 
 %% Step 3: learn a VQ or GMM vocabulary
 switch encoder.type
-  case {'bovw', 'vlad', 'llc', 'sc'}
-    fprintf('%s: running k-means...\n', mfilename) ; 
-    vl_twister('state', opts.seed) ;
-    nzidx = sum(abs(descrs),1) > 0;
-    descrs = descrs(:,nzidx);
-    % k-means by vl_kmeans %
-    [encoder.words, ~] = vl_kmeans(descrs, opts.numWords,'verbose', 'algorithm', 'elkan') ;
-    encoder.kdtree = vl_kdtreebuild(encoder.words, 'numTrees', 4) ;  
-  case {'lasc'}
+  case 'lasc'
     % k-means by sp_kmeans %    
     fprintf('%s: running k-means...\n', mfilename) ; 
     options = foptions;
@@ -209,22 +192,14 @@ switch encoder.type
     [encoder.words,index] = sp_kmeans(centers, descrs', options);
     encoder.words = encoder.words';  
     encoder.pca = Subspace_PCA(encoder.words, opts.numPcaDimensions, encoder.numWords, descrs, index) ;  
-  case {'fv'} 
+  case 'fv'
     vl_twister('state', opts.seed) ;
-    if 1
       v = var(descrs')' ;
       [encoder.means, encoder.covariances, encoder.priors] = ...
           vl_gmm(descrs, opts.numWords, 'verbose', ...
                  'Initialization', 'kmeans', ...
                  'CovarianceBound', double(max(v)*0.0001), ...
                  'NumRepetitions', 1) ;
-    else
-      addpath lib/yael/matlab
-      [a,b,c] = yael_gmm(descrs, opts.numWords, 'verbose', 2) ;
-      encoder.priors = single(a) ;
-      encoder.means = single(b) ;
-      encoder.covariances = single(c) ;
-    end
-
+   
 end
 

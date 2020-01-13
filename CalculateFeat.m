@@ -2,7 +2,7 @@ function features = CalculateFeat(imPath, encoder, maxSize)
 
 norm = 'matrix'; % 'l2', 'none', 'root', 'matrix'
 
-%%% load features in cell type %%%
+%% load features in cell type %%
 feat_dir = ['features' imPath(5:end-4) '.mat'];
 if exist(feat_dir, 'file')
     load(feat_dir, 'features');
