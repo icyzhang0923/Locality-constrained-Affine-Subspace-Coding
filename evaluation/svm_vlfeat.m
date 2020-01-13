@@ -3,8 +3,6 @@ function acc = svm_vlfeat(imdb, opts, dataDir, classRange, train_idx, test_idx)
 iter_max = 100;
 switch opts.dataset
     case 'voc07', iter_max = 30;
-    case 'scene15', iter_max = 160;
-    case 'fmd', iter_max = 300;
 end
 
 switch opts.dataset
