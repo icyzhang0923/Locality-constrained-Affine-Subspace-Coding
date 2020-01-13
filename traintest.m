@@ -121,5 +121,5 @@ end
 if strcmp(opts.dataset, 'voc07')
   fprintf('Average accuracy over %d times: mean+std %5.4f+%3.4f\n', iter_num, mean(maps), std(maps)); 
 else
-  fprintf('Average accuracy over %d times: mean+std %5.4f+%3.4f\n', iter_num, mean(accuracies), std(accuracies)); 
+  fprintf('Mean average precision over %d times: mean+std %5.4f+%3.4f\n', iter_num, mean(accuracies), std(accuracies)); 
 end
