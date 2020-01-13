@@ -74,7 +74,7 @@ else
       save(opts.encoderPath, '-struct', 'encoder') ;
 end
 
-encodeImage(encoder, fullfile(imdb.imageDir, imdb.images.name),opts.kernel,'cacheDir', opts.cacheDir, 'pca', opts.pca) ;         
+encodeImage(encoder, fullfile(imdb.imageDir, imdb.images.name),opts.kernel,'cacheDir', opts.cacheDir) ;         
 dataDir = opts.cacheDir;
 
 % --------------------------------------------------------------------
