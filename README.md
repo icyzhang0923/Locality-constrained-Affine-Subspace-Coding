@@ -17,7 +17,7 @@ In this repository, we release the implementations of two feature coding methods
 * CUDNN 5.0+    
 ## Installation and Usage  
 * Always use `git clone --recursive git@github.com:icyzhang0923/Locality-constrained-Affine-Subspace-Coding.git` to clone this project.  
-* Download the image classification datasets ([VOC2007](https://pjreddie.com/projects/pascal-voc-dataset-mirror/), [Caltech256](http://www.vision.caltech.edu/Image_Datasets/Caltech256/), [Scene67](http://web.mit.edu/torralba/www/indoor.html), and [SUN397](https://vision.princeton.edu/projects/2010/SUN/)) or the image retrieval datasets ([INRIA Holidays](http://lear.inrialpes.fr/~jegou/data.php), [UKBench](http://www.vis.uky.edu/~stewe/ukbench/), and [Oxford5K](http://www.robots.ox.ac.uk/~vgg/data/oxbuildings/)).    
+* Download the image classification datasets ([VOC2007](https://pjreddie.com/projects/pascal-voc-dataset-mirror/), [Caltech256](http://www.vision.caltech.edu/Image_Datasets/Caltech256/), [Scene67](http://web.mit.edu/torralba/www/indoor.html), and [SUN397](https://vision.princeton.edu/projects/2010/SUN/)).      
 * Download the pretrained [VGG-VD-16](http://www.vlfeat.org/matconvnet/pretrained/) model on ImageNet dataset.
 * Download and complie the [VLFeat](http://www.vlfeat.org/) and [MatConvNet](http://www.vlfeat.org/matconvnet/) tool box. Please refer to the official website for more details.  
 * Run the main function `traintest.m` to start the experiments.  
